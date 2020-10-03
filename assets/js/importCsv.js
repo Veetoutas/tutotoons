@@ -19,7 +19,7 @@ $(document).ready(function(){
                 }
                 else
                 {
-                    $('#employee_table').html(data);
+                    $('#csv_table').html(data);
                 }
             }
         })
