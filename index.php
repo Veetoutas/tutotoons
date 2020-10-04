@@ -5,11 +5,10 @@ namespace Phppot;
 use Phppot\Model\CSV;
 
 require_once("Model/CSV.php");
-$faq = new CSV();
+$csv = new CSV();
 
 ?>
 
-<!-- HTML -->
 <html>
     <head>
         <!-- META -->
@@ -66,7 +65,7 @@ $faq = new CSV();
                             <form id="upload_csv" method="post" enctype="multipart/form-data">
                                 <div class="col-md-12" id="form-column">
                                     <input id="file-upload" type="file" name="employee_file"/>
-                                    <input type="submit"  name="upload" id="upload" value="Upload" class="btn btn-info" />
+                                    <input type="submit"  name="upload" id="upload" value="Import" class="btn btn-info" />
                                 </div>
                             </form>
                         </div>
@@ -87,31 +86,33 @@ $faq = new CSV();
                             </thead>
                             <tbody>
                             <?php
-                                if ($faqResult = $faq->getAll()) {
-                                foreach ($faqResult as $k => $v) {
-                            ?>
-                                <tr class="table-row">
-                                    <td><?php echo $k+1; ?></td>
-                                    <td contenteditable="true"
-                                        onBlur="saveToDatabase(this,'first','<?php echo $faqResult[$k]["id"]; ?>')"
-                                        onClick="showEdit(this);"><?php echo $faqResult[$k]["first"]; ?></td>
-                                    <td contenteditable="true"
-                                        onBlur="saveToDatabase(this,'second','<?php echo $faqResult[$k]["id"]; ?>')"
-                                        onClick="showEdit(this);"><?php echo $faqResult[$k]["second"]; ?></td>
-                                    <td contenteditable="true"
-                                        onBlur="saveToDatabase(this,'third','<?php echo $faqResult[$k]["id"]; ?>')"
-                                        onClick="showEdit(this);"><?php echo $faqResult[$k]["third"]; ?></td>
-                                    <td contenteditable="true"
-                                        onBlur="saveToDatabase(this,'fourth','<?php echo $faqResult[$k]["id"]; ?>')"
-                                        onClick="showEdit(this);"><?php echo $faqResult[$k]["fourth"]; ?></td>
-                                    <td align='left' id="delete-button">
-                                        <input id="<?php echo $faqResult[$k]["id"]; ?>" type="button" value="Delete" class="remove" name="remove">
-                                    </td>
-                                </tr>
-                            <?php
+                                 // START foreach
+                                if ($csvResult = $csv->getAll()) {
+                                    foreach ($csvResult as $k => $v) {
+                                ?>
+                                    <tr class="table-row">
+                                        <td><?php echo $k+1; ?></td>
+                                        <td contenteditable="true"
+                                            onBlur="saveToDatabase(this,'first','<?php echo $csvResult[$k]["id"]; ?>')"
+                                            onClick="showEdit(this);"><?php echo $csvResult[$k]["first"]; ?></td>
+                                        <td contenteditable="true"
+                                            onBlur="saveToDatabase(this,'second','<?php echo $csvResult[$k]["id"]; ?>')"
+                                            onClick="showEdit(this);"><?php echo $csvResult[$k]["second"]; ?></td>
+                                        <td contenteditable="true"
+                                            onBlur="saveToDatabase(this,'third','<?php echo $csvResult[$k]["id"]; ?>')"
+                                            onClick="showEdit(this);"><?php echo $csvResult[$k]["third"]; ?></td>
+                                        <td contenteditable="true"
+                                            onBlur="saveToDatabase(this,'fourth','<?php echo $csvResult[$k]["id"]; ?>')"
+                                            onClick="showEdit(this);"><?php echo $csvResult[$k]["fourth"]; ?></td>
+                                        <td align='left' id="delete-button">
+                                            <input id="<?php echo $csvResult[$k]["id"]; ?>" type="button" value="Delete" class="remove" name="remove">
+                                        </td>
+                                    </tr>
+                                <?php
+                                    // END foreach
+                                    }
                                 }
-                            }
-                            ?>
+                                ?>
                         </tbody>
                     </div>
                 </div>

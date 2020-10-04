@@ -18,14 +18,13 @@ class DataSource
         $this->conn = $this->getConnection();
     }
 
-
     /**
      * @return \mysqli
      */
     public function getConnection()
     {
         $conn = new \mysqli(self::HOST, self::USERNAME, self::PASSWORD, self::DATABASENAME);
-        
+
         if (mysqli_connect_errno()) {
             trigger_error("Problem with connecting to database.");
         }
@@ -45,7 +44,7 @@ class DataSource
     {
         $stmt = $this->conn->prepare($query);
         
-        if(!empty($paramType) && !empty($paramArray)) {
+        if (!empty($paramType) && !empty($paramArray)) {
             $this->bindQueryParams($stmt, $paramType, $paramArray);
         }
         
@@ -89,15 +88,13 @@ class DataSource
     {
         $stmt = $this->conn->prepare($query);
         
-        if(!empty($paramType) && !empty($paramArray)) {
+        if (!empty($paramType) && !empty($paramArray)) {
             $this->bindQueryParams($stmt, $paramType, $paramArray);
         }
         $stmt->execute();
     }
     
     /**
-     * 1. Prepares parameter binding
-     * 2. Bind prameters to the sql statement
      * @param string $stmt
      * @param string $paramType
      * @param array $paramArray
@@ -115,7 +112,6 @@ class DataSource
     }
     
     /**
-     * To get database results
      * @param string $query
      * @param string $paramType
      * @param array $paramArray
@@ -125,7 +121,7 @@ class DataSource
     {
         $stmt = $this->conn->prepare($query);
         
-        if(!empty($paramType) && !empty($paramArray)) {
+        if (!empty($paramType) && !empty($paramArray)) {
             $this->bindQueryParams($stmt, $paramType, $paramArray);
         }
         

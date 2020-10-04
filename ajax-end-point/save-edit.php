@@ -8,6 +8,5 @@ $columnValue = $_POST["editval"];
 $questionId = $_POST["id"];
 
 require_once (__DIR__ . "./../Model/CSV.php");
-$faq = new CSV();
-$result = $faq->editRecord($columnName, $columnValue, $questionId);
-?>
+$csv = new CSV();
+$result = $csv->editRecord($columnName, $columnValue, $questionId);

@@ -1,6 +1,7 @@
 <?php 
 namespace Phppot\Model;
 
+use mysql_xdevapi\Exception;
 use Phppot\Datasource;
 
 class CSV
@@ -14,20 +15,17 @@ class CSV
     }
     
     /**
-     * to get the interview questions
-     *
      * @return array result record
      */
     public function getAll()
     {
+
         $query = "SELECT * from tuto_import_csv ORDER BY import_time DESC LIMIT 20";
         $result = $this->ds->select($query);
         return $result;
     }
     
     /**
-     * to edit redorcbased on the question_id
-     *
      * @param string $columnName
      * @param string $columnValue
      * @param string $questionId

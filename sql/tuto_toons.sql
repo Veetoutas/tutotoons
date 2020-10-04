@@ -1,14 +1,16 @@
 --
--- Database: `tuto_toons`
+-- Create Database: `tuto_toons`
 --
 
--- --------------------------------------------------------
+CREATE DATABASE IF NOT EXISTS tuto_toons
+CHARACTER SET utf8
+COLLATE utf8_unicode_ci;
 
 --
 -- Table structure for table `tuto_import_csv`
 --
 
-CREATE TABLE `tuto_import_csv` (
+CREATE TABLE IF NOT EXISTS tuto_toons.tuto_import_csv (
   `id` int(8) NOT NULL,
   `first` text NOT NULL,
   `second` text NOT NULL,
@@ -21,7 +23,7 @@ CREATE TABLE `tuto_import_csv` (
 -- Dumping data for table `tuto_import_csv`
 --
 
-INSERT INTO `tuto_import_csv` (`id`, `first`, `second`, `third`, `fourth`) VALUES
+INSERT INTO tuto_toons.tuto_import_csv (`id`, `first`, `second`, `third`, `fourth`) VALUES
 (1, 'aaaa', 'BBBB', 'CcC', 'ĄąąĄžžėų');
 
 --
@@ -31,7 +33,7 @@ INSERT INTO `tuto_import_csv` (`id`, `first`, `second`, `third`, `fourth`) VALUE
 --
 -- Indexes for table `tuto_import_csv`
 --
-ALTER TABLE `tuto_import_csv`
+ALTER TABLE tuto_toons.tuto_import_csv
   ADD PRIMARY KEY (`id`);
 
 --
@@ -41,5 +43,5 @@ ALTER TABLE `tuto_import_csv`
 --
 -- AUTO_INCREMENT for table `tuto_import_csv`
 --
-ALTER TABLE `tuto_import_csv`
+ALTER TABLE tuto_toons.tuto_import_csv
   MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;

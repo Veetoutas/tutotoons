@@ -1,3 +1,4 @@
+<!-- The dropping leafs HTML -->
 <div>
     <div class="leaf">
         <div>  <img src="http://www.pngmart.com/files/1/Fall-Autumn-Leaves-Transparent-PNG.png" height="75px" width="75px"></img></div>
