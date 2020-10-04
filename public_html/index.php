@@ -27,14 +27,14 @@ $csv = new CSV();
 
         <!--  Styles  -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-        <link href="./assets/CSS/style.css" type="text/css" rel="stylesheet" />
+        <link href="assets/CSS/style.css" type="text/css" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@700&display=swap" rel="stylesheet">
 
         <!--  Scripts  -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="./assets/js/inlineEdit.js"></script>
-        <script src="./assets/js/importCsv.js"></script>
-        <script src="./assets/js/removeRow.js"></script>
+        <script src="assets/js/inlineEdit.js"></script>
+        <script src="assets/js/importCsv.js"></script>
+        <script src="assets/js/removeRow.js"></script>
     </head>
 
     <body id="demo-one">
@@ -53,11 +53,12 @@ $csv = new CSV();
                     </nav>
                 </div>
                 <div class="col-sm-2">
-                    <img class="img-responsive animated bounceInUp" id="img-responsive" src="./images/tuto_owl.png">
+                    <img class="img-responsive animated bounceInUp" id="img-responsive" src="images/tuto_owl.png">
                 </div>
                 <?php
                     include './assets/effects/leaf_html.php';
                 ?>
+            </div>
             <div class="row">
                 <div class="div col-md-12" id="import-button-column">
                     <div class="row">
@@ -75,6 +76,7 @@ $csv = new CSV();
             <div class="row">
                 <div class="col-md-12">
                     <div class="container">
+                        <!-- TABLE START -->
                         <table id="csv_table" class="table tbl-qa table-responsive">
                             <thead>
                                 <th>#</th>
@@ -113,7 +115,9 @@ $csv = new CSV();
                                     }
                                 }
                                 ?>
-                        </tbody>
+                            </tbody>
+                        </table>
+                        <!-- TABLE END -->
                     </div>
                 </div>
             </div>

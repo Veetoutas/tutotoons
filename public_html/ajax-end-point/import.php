@@ -9,7 +9,7 @@ require_once("../Model/CSV.php");
 // Check if the file is not empty
 if (!empty($_FILES["employee_file"]["name"])) {
 
-    $connect = mysqli_connect("localhost", "root", "", "tuto_toons");
+    $connect = mysqli_connect("mysql", "root", "root", "tuto_toons");
     $allowed_ext = array("csv");
     $array = explode(".", $_FILES["employee_file"]["name"]);
     $extension = end($array);

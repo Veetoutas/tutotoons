@@ -3,11 +3,11 @@ namespace Phppot;
 
 class DataSource
 {
-    const HOST = 'localhost';
+    const HOST = 'mysql';
 
     const USERNAME = 'root';
 
-    const PASSWORD = '';
+    const PASSWORD = 'root';
 
     const DATABASENAME = 'tuto_toons';
 
@@ -21,26 +21,25 @@ class DataSource
     /**
      * @return \mysqli
      */
-    public function getConnection()
+    public function getConnection(): \mysqli
     {
         $conn = new \mysqli(self::HOST, self::USERNAME, self::PASSWORD, self::DATABASENAME);
 
         if (mysqli_connect_errno()) {
             trigger_error("Problem with connecting to database.");
         }
-        
         $conn->set_charset("utf8");
+
         return $conn;
     }
 
     /**
-     * To get database results
      * @param string $query
      * @param string $paramType
      * @param array $paramArray
-     * @return array
+     * @return mixed
      */
-    public function select($query, $paramType="", $paramArray=array())
+    public function select(string $query, string $paramType="", array $paramArray=array())
     {
         $stmt = $this->conn->prepare($query);
         
@@ -60,6 +59,7 @@ class DataSource
         if (! empty($resultset)) {
             return $resultset;
         }
+        return false;
     }
     
     /**
@@ -69,12 +69,13 @@ class DataSource
      * @param array $paramArray
      * @return int
      */
-    public function insert($query, $paramType, $paramArray)
+    public function insert(string $query, string $paramType, array $paramArray): int
     {
         $stmt = $this->conn->prepare($query);
         $this->bindQueryParams($stmt, $paramType, $paramArray);
         $stmt->execute();
         $insertId = $stmt->insert_id;
+
         return $insertId;
     }
     
@@ -84,7 +85,7 @@ class DataSource
      * @param string $paramType
      * @param array $paramArray
      */
-    public function execute($query, $paramType="", $paramArray=array())
+    public function execute(string $query, string $paramType="", $paramArray=array()): void
     {
         $stmt = $this->conn->prepare($query);
         
@@ -93,13 +94,13 @@ class DataSource
         }
         $stmt->execute();
     }
-    
+
     /**
-     * @param string $stmt
-     * @param string $paramType
+     * @param $stmt
+     * @param $paramType
      * @param array $paramArray
      */
-    public function bindQueryParams($stmt, $paramType, $paramArray=array())
+    public function bindQueryParams($stmt, string $paramType, $paramArray=array()): void
     {
         $paramValueReference[] = & $paramType;
         for ($i = 0, $iMax = count($paramArray); $i < $iMax; $i ++) {
@@ -110,14 +111,14 @@ class DataSource
             'bind_param'
         ), $paramValueReference);
     }
-    
+
     /**
      * @param string $query
      * @param string $paramType
      * @param array $paramArray
      * @return int
      */
-    public function numRows($query, $paramType="", $paramArray=array())
+    public function numRows(string $query, string $paramType="", $paramArray=array()): int
     {
         $stmt = $this->conn->prepare($query);
         
