@@ -14,4 +14,11 @@
 3. Cells editing and rows deletion using AJAX
 4. Shows 20 most recent rows while preserving the old data at the DB
 
+-------------------
+### Personal takeaways: 
+1. This task was quite challenging for me as I had no previous experience with AJAX, but I loved it. I've learned a lot.
+2. The 'import.php' file looks terrible. The 'IFs' nesting, not much of a reusable code there and also quite hard to read at first.
+I am not going to plead myself, but since it was my first time doing some of the things I've done in this task, I think it is ok 
+to leave some room for improvement. I will definitely improve this project for myself in the near future to become a better developer.
+
 
